@@ -25,11 +25,20 @@
       checkInterval = setInterval(rebuildTweetList, 1000);
     }
 
+    var whatList;
+
+    if ($tweetholder.hasClass('handleClicked')) {
+  //    whatList = streams.users[tweet.user];
+    }
+    else {
+      whatList = streams.home;
+    }
+
     function rebuildTweetList() {
       $tweetholder.html('');
-      var index = streams.home.length - 1;
+      var index = whatList.length - 1;
       while(index >= 0){
-        var tweet = streams.home[index];
+        var tweet = whatList[index];
         var $tweet = $('<div class="tweet"></div>');
         var handle = '<span class="handle">' + tweet.user + '</span>';
         var dateOptions = { weekday: 'long', year: '2-digit', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
@@ -40,7 +49,12 @@
       }
 
       $('.handle').on('click', function(){
-        alert("clicked " + tweet.user);
+        $tweetholder.addClass('handleClicked');
+        whatList = streams.users[tweet.user]
+        //show streams.users.thatonefoo
+        //create view all users button
+        //that goes back to streams.home
+
       });
 
     }
