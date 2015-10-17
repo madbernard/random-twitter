@@ -10,7 +10,7 @@
   <header></header>
   <section class="main-tweets">
     <div>
-      <p>This is text in the section that holds the tweetholder div</p>
+      <button class="back-home" type="button">Return to tweet list</button>
     </div>
     <div class="tweetholder"></div>
   </section>
@@ -40,7 +40,7 @@
       while(index >= 0){
         var tweet = whatList[index];
         var $tweet = $('<div class="tweet"></div>');
-        var handle = '<span class="handle">' + tweet.user + '</span>';
+        var handle = '<span class="handle" data-handle="' + tweet.user + '">' + tweet.user + '</span>';
         var dateOptions = { weekday: 'long', year: '2-digit', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
         var tweetDate = '<span class="tweet-date">' + tweet.created_at.toLocaleDateString('en-US', dateOptions); + '</span>'
         $tweet.html('@' + handle + ': ' + tweet.message + '<br>' + tweetDate);
@@ -50,11 +50,18 @@
 
       $('.handle').on('click', function(){
         $tweetholder.addClass('handleClicked');
-        whatList = streams.users[tweet.user]
+        var whatHandle = $(this).data('handle');
+        whatList = streams.users[whatHandle];
         //show streams.users.thatonefoo
         //create view all users button
         //that goes back to streams.home
 
+      });
+
+      $('.back-home').on('click', function() {
+        $tweetholder.removeClass('handleClicked');
+        whatList = streams.home;
+        rebuildTweetList();
       });
 
     }
