@@ -8,12 +8,12 @@
 </head>
 <body>
   <header></header>
-    <section class="main-tweets">
-      <div>
-        <p>This is text in the section that holds the tweetholder div</p>
-      </div>
-      <div class="tweetholder"></div>
-    </section>
+  <section class="main-tweets">
+    <div>
+      <p>This is text in the section that holds the tweetholder div</p>
+    </div>
+    <div class="tweetholder"></div>
+  </section>
   <script>
 
   $(document).ready(function(){
@@ -38,12 +38,17 @@
         $tweet.appendTo($tweetholder);
         index -= 1;
       }
+
+      $('.handle').on('click', function(){
+        alert("clicked " + tweet.user);
+      });
+
     }
     rebuildTweetList();
     checkForTweets();
 
   });
 
-  </script>
+</script>
 </body>
 </html>
