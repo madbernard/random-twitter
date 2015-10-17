@@ -31,9 +31,10 @@
       while(index >= 0){
         var tweet = streams.home[index];
         var $tweet = $('<div class="tweet"></div>');
+        var handle = '<span class="handle">' + tweet.user + '</span>';
         var dateOptions = { weekday: 'long', year: '2-digit', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
-        var tweetDate = tweet.created_at.toLocaleDateString('en-US', dateOptions);
-        $tweet.text('@' + tweet.user + ': ' + tweet.message + ' - ' + tweetDate);
+        var tweetDate = '<span class="tweet-date">' + tweet.created_at.toLocaleDateString('en-US', dateOptions); + '</span>'
+        $tweet.html('@' + handle + ': ' + tweet.message + '<br>' + tweetDate);
         $tweet.appendTo($tweetholder);
         index -= 1;
       }
