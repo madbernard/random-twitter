@@ -24,18 +24,19 @@
     }
 
     function rebuildTweetList() {
-    $tweetholder.html('');
+      $tweetholder.html('');
       var index = streams.home.length - 1;
       while(index >= 0){
         var tweet = streams.home[index];
-        var $tweet = $('<div></div>');
+        var $tweet = $('<div class="tweet"></div>');
         var dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
-        $tweet.text('@' + tweet.user + ': ' + tweet.message + ' - ' + tweet.created_at.toLocaleDateString('en-US', dateOptions));
+        var tweetDate = tweet.created_at.toLocaleDateString('en-US', dateOptions);
+        $tweet.text('@' + tweet.user + ': ' + tweet.message + ' - ' + tweetDate);
         $tweet.appendTo($tweetholder);
         index -= 1;
       }
     }
-
+    rebuildTweetList();
     checkForTweets();
 
   });
