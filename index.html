@@ -9,24 +9,34 @@
 <body>
   <header></header>
   <section>
-    <div class="buttonholder"><button id="get-tweets" type="button">Get New Tweets</button></div>
     <div class="tweetholder"></div>
   </section>
-  
+
   <script>
 
   $(document).ready(function(){
-    var $body = $('body');
-    $body.html('');
+    var $tweetholder = $('.tweetholder');
 
-    var index = streams.home.length - 1;
-    while(index >= 0){
-      var tweet = streams.home[index];
-      var $tweet = $('<div></div>');
-      $tweet.text('@' + tweet.user + ': ' + tweet.message);
-      $tweet.appendTo($body);
-      index -= 1;
+    var checkInterval;
+
+    function checkForTweets() {
+      checkInterval = setInterval(rebuildTweetList, 1000);
     }
+
+    function rebuildTweetList() {
+    $tweetholder.html('');
+      var index = streams.home.length - 1;
+      while(index >= 0){
+        var tweet = streams.home[index];
+        var $tweet = $('<div></div>');
+        var dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
+        $tweet.text('@' + tweet.user + ': ' + tweet.message + ' - ' + tweet.created_at.toLocaleDateString('en-US', dateOptions));
+        $tweet.appendTo($tweetholder);
+        index -= 1;
+      }
+    }
+
+    checkForTweets();
 
   });
 
