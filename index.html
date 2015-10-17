@@ -8,10 +8,12 @@
 </head>
 <body>
   <header></header>
-  <section>
-    <div class="tweetholder"></div>
-  </section>
-
+    <section class="main-tweets">
+      <div>
+        <p>This is text in the section that holds the tweetholder div</p>
+      </div>
+      <div class="tweetholder"></div>
+    </section>
   <script>
 
   $(document).ready(function(){
@@ -29,7 +31,7 @@
       while(index >= 0){
         var tweet = streams.home[index];
         var $tweet = $('<div class="tweet"></div>');
-        var dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
+        var dateOptions = { weekday: 'long', year: '2-digit', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
         var tweetDate = tweet.created_at.toLocaleDateString('en-US', dateOptions);
         $tweet.text('@' + tweet.user + ': ' + tweet.message + ' - ' + tweetDate);
         $tweet.appendTo($tweetholder);
