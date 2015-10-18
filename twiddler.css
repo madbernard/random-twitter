@@ -1,21 +1,57 @@
 body {
 	font-family: Arial;
-	background-color: navy;
+    background-color: #999;
+    min-height: 100vh;
+    height: 100vh;
+    margin: 0;
 }
 
 section {
-	padding: 10px 400px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    margin: 0 auto;
+    height: 100%;
 }
 
 .tweet {
-	padding: 7px 12px;
-	background-color: aqua;
-	border: 5px solid #bbb;
-	border-radius: 10px;
+    width: 500px;
+    max-width: 500px;
+    min-width: 500px;
+    margin: 7px 0;
+    padding: 12px 15px 25px 15px;
+    background-color: #FFFFFF;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+}
+
+.tweet-date {
+    font-size: smaller;
+    float: right;
+    color: #999999;
+    margin-top: 3px;
+    margin-right: 12px;
 }
 
 .back-home {
-	display: none;
+    float: right;
+    margin-right: 36px;
+    background-color: #DDD;
+    border-radius: 10px;
+    width: 282px;
+    padding: 13px;
+    font-size: 18px;
+    display: none;
+    box-shadow: none;
+}
+
+.nav {
+    border-bottom: 1px solid black;
+    padding-bottom: 9px;
+    margin-bottom: 5px;
+    width: 100%;
 }
 
 .displayed {

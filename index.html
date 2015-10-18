@@ -9,7 +9,7 @@
 <body>
   <header></header>
   <section class="main-tweets">
-    <div>
+    <div class="nav">
       <button class="back-home" type="button">Return to tweet list</button>
     </div>
     <div class="tweetholder"></div>
@@ -29,48 +29,44 @@
 
     if ($tweetholder.hasClass('handleClicked')) {
   //    whatList = streams.users[tweet.user];
-    }
-    else {
-      whatList = streams.home;
-    }
+}
+else {
+  whatList = streams.home;
+}
 
-    function rebuildTweetList() {
-      $tweetholder.html('');
-      var index = whatList.length - 1;
-      while(index >= 0){
-        var tweet = whatList[index];
-        var $tweet = $('<div class="tweet"></div>');
-        var handle = '<span class="handle" data-handle="' + tweet.user + '">' + tweet.user + '</span>';
-        var dateOptions = { weekday: 'long', year: '2-digit', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
-        var tweetDate = '<span class="tweet-date">' + tweet.created_at.toLocaleDateString('en-US', dateOptions); + '</span>'
-        $tweet.html('@' + handle + ': ' + tweet.message + '<br>' + tweetDate);
-        $tweet.appendTo($tweetholder);
-        index -= 1;
-      }
-      
-      $('.handle').on('click', function(){
-        $tweetholder.addClass('handleClicked');
-        var whatHandle = $(this).data('handle');
-        whatList = streams.users[whatHandle];
-        $('.back-home').addClass('displayed');
-        //show streams.users.thatonefoo
-        //create view all users button
-        //that goes back to streams.home
+function rebuildTweetList() {
+  $tweetholder.html('');
+  var index = whatList.length - 1;
+  while(index >= 0){
+    var tweet = whatList[index];
+    var $tweet = $('<div class="tweet"></div>');
+    var handle = '<span class="handle" data-handle="' + tweet.user + '">@' + tweet.user + '</span>';
+    var dateOptions = { weekday: 'long', year: '2-digit', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
+    var tweetDate = '<span class="tweet-date">' + tweet.created_at.toLocaleDateString('en-US', dateOptions); + '</span>'
+    $tweet.html(handle + ': ' + tweet.message + '<br>' + tweetDate);
+    $tweet.appendTo($tweetholder);
+    index -= 1;
+  }
+}
 
-      });
+$('.tweetholder').on('click', '.handle', function(){
+  $tweetholder.addClass('handleClicked');
+  var whatHandle = $(this).data('handle');
+  whatList = streams.users[whatHandle];
+  $('.back-home').addClass('displayed');
+});
 
-      $('.back-home').on('click', function() {
-        $tweetholder.removeClass('handleClicked');
-        whatList = streams.home;
-        $(this).removeClass('displayed');
-        rebuildTweetList();
-      });
+$('.back-home').on('click', function() {
+  $tweetholder.removeClass('handleClicked');
+  whatList = streams.home;
+  $(this).removeClass('displayed');
+  rebuildTweetList();
+});
 
-    }
-    rebuildTweetList();
-    checkForTweets();
+rebuildTweetList();
+checkForTweets();
 
-  });
+});
 
 </script>
 </body>
