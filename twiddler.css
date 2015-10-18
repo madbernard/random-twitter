@@ -1,9 +1,17 @@
 body {
 	font-family: Arial;
+	background-color: navy;
+}
+
+section {
+	padding: 10px 400px;
 }
 
 .tweet {
-	border: 5px solid #ccc;
+	padding: 7px 12px;
+	background-color: aqua;
+	border: 5px solid #bbb;
+	border-radius: 10px;
 }
 
 .back-home {
@@ -12,4 +20,8 @@ body {
 
 .displayed {
 	display: block;
+}
+
+.handle {
+	color: blue;
 }
