@@ -4,6 +4,7 @@ body {
     min-height: 100vh;
     height: 100vh;
     margin: 0;
+    overflow-y: scroll;
 }
 
 section {
@@ -36,7 +37,9 @@ section {
 }
 
 .back-home {
+    border: 1px black solid;
     float: right;
+    margin-top: 8px;
     margin-right: 36px;
     background-color: #DDD;
     border-radius: 10px;
@@ -45,6 +48,11 @@ section {
     font-size: 18px;
     display: none;
     box-shadow: none;
+    cursor: pointer;
+}
+
+.back-home:hover {
+	background-color: #999;
 }
 
 .nav {
@@ -52,6 +60,7 @@ section {
     padding-bottom: 9px;
     margin-bottom: 5px;
     width: 100%;
+    min-height: 57px;
 }
 
 .displayed {
@@ -60,4 +69,5 @@ section {
 
 .handle {
 	color: blue;
+    cursor: pointer;
 }
