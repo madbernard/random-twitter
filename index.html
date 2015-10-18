@@ -52,6 +52,7 @@
         $tweetholder.addClass('handleClicked');
         var whatHandle = $(this).data('handle');
         whatList = streams.users[whatHandle];
+        $('.back-home').addClass('displayed');
         //show streams.users.thatonefoo
         //create view all users button
         //that goes back to streams.home
@@ -61,6 +62,7 @@
       $('.back-home').on('click', function() {
         $tweetholder.removeClass('handleClicked');
         whatList = streams.home;
+        $(this).removeClass('displayed');
         rebuildTweetList();
       });
 
